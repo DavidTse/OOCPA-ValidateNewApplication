@@ -72,4 +72,8 @@ public class Application implements java.io.Serializable {
 		this.validationResults = validationResults;
 	}
 
+
+    public String toString(){
+        return "Application: id=" + this.id + ",patient=" + this.patient + ", provider=" + this.provider;
+    }
 }

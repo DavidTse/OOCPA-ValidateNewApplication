@@ -62,5 +62,9 @@ public class Patient implements java.io.Serializable {
 		this.lastName = lastName;
 		this.healthNum = healthNum;
 	}
+	
+	public String toString(){
+	  return "Patient: id=" + this.id + ", healthNum=" + this.healthNum + ", firstName=" + this.firstName + ", lastName=" + this.lastName;   
+	}
 
 }

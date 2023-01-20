@@ -62,5 +62,9 @@ public class Provider implements java.io.Serializable {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
+	
+	public String toString(){
+	  return "Provider: id=" + this.id + ", csn=" + this.csn + ", firstName=" + this.firstName + ", lastName=" + this.lastName;   
+	}	
 
 }
