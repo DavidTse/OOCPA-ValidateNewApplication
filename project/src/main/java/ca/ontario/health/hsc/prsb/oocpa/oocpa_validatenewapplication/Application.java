@@ -23,6 +23,16 @@ public class Application implements java.io.Serializable {
 	@javax.persistence.OneToMany(fetch = javax.persistence.FetchType.EAGER, cascade = {javax.persistence.CascadeType.ALL})
 	private java.util.List<ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.ValidationMessage> validationResults;
 
+	private java.lang.String priority;
+
+	private java.util.Date receivedDate;
+
+	private java.lang.String PANumber;
+
+	private java.lang.String serviceCategory;
+
+	private java.util.Date scheduledAdmissionDate;
+
 	public Application() {
 	}
 
@@ -61,19 +71,67 @@ public class Application implements java.io.Serializable {
 		this.validationResults = validationResults;
 	}
 
+	public String toString() {
+		return "Application: id=" + this.id + ",patient=" + this.patient
+				+ ", provider=" + this.provider;
+	}
+
+	public java.lang.String getPriority() {
+		return this.priority;
+	}
+
+	public void setPriority(java.lang.String priority) {
+		this.priority = priority;
+	}
+
+	public java.util.Date getReceivedDate() {
+		return this.receivedDate;
+	}
+
+	public void setReceivedDate(java.util.Date receivedDate) {
+		this.receivedDate = receivedDate;
+	}
+
+	public java.lang.String getPANumber() {
+		return this.PANumber;
+	}
+
+	public void setPANumber(java.lang.String PANumber) {
+		this.PANumber = PANumber;
+	}
+
+	public java.lang.String getServiceCategory() {
+		return this.serviceCategory;
+	}
+
+	public void setServiceCategory(java.lang.String serviceCategory) {
+		this.serviceCategory = serviceCategory;
+	}
+
+	public java.util.Date getScheduledAdmissionDate() {
+		return this.scheduledAdmissionDate;
+	}
+
+	public void setScheduledAdmissionDate(java.util.Date scheduledAdmissionDate) {
+		this.scheduledAdmissionDate = scheduledAdmissionDate;
+	}
+
 	public Application(
 			java.lang.Long id,
 			ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.Patient patient,
 			ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.Provider provider,
-			java.util.List<ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.ValidationMessage> validationResults) {
+			java.util.List<ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.ValidationMessage> validationResults,
+			java.lang.String priority, java.util.Date receivedDate,
+			java.lang.String PANumber, java.lang.String serviceCategory,
+			java.util.Date scheduledAdmissionDate) {
 		this.id = id;
 		this.patient = patient;
 		this.provider = provider;
 		this.validationResults = validationResults;
+		this.priority = priority;
+		this.receivedDate = receivedDate;
+		this.PANumber = PANumber;
+		this.serviceCategory = serviceCategory;
+		this.scheduledAdmissionDate = scheduledAdmissionDate;
 	}
-
-
-    public String toString(){
-        return "Application: id=" + this.id + ",patient=" + this.patient + ", provider=" + this.provider;
-    }
 }
