@@ -9,7 +9,7 @@ public class Application implements java.io.Serializable {
 
 	static final long serialVersionUID = 1L;
 
-	@javax.persistence.GeneratedValue(generator = "APPLICATION_ID_GENERATOR", strategy = javax.persistence.GenerationType.AUTO)
+	@javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "APPLICATION_ID_GENERATOR")
 	@javax.persistence.Id
 	@javax.persistence.SequenceGenerator(name = "APPLICATION_ID_GENERATOR", sequenceName = "APPLICATION_ID_SEQ")
 	private java.lang.Long id;
@@ -32,6 +32,8 @@ public class Application implements java.io.Serializable {
 	private java.lang.String serviceCategory;
 
 	private java.util.Date scheduledAdmissionDate;
+
+	private java.util.List<ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.File> files;
 
 	public Application() {
 	}
@@ -116,14 +118,26 @@ public class Application implements java.io.Serializable {
 		this.scheduledAdmissionDate = scheduledAdmissionDate;
 	}
 
+	public java.util.List<ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.File> getFiles() {
+		return this.files;
+	}
+
+	public void setFiles(
+			java.util.List<ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.File> files) {
+		this.files = files;
+	}
+
 	public Application(
 			java.lang.Long id,
 			ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.Patient patient,
 			ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.Provider provider,
 			java.util.List<ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.ValidationMessage> validationResults,
-			java.lang.String priority, java.util.Date receivedDate,
-			java.lang.String PANumber, java.lang.String serviceCategory,
-			java.util.Date scheduledAdmissionDate) {
+			java.lang.String priority,
+			java.util.Date receivedDate,
+			java.lang.String PANumber,
+			java.lang.String serviceCategory,
+			java.util.Date scheduledAdmissionDate,
+			java.util.List<ca.ontario.health.hsc.prsb.oocpa.oocpa_validatenewapplication.File> files) {
 		this.id = id;
 		this.patient = patient;
 		this.provider = provider;
@@ -133,5 +147,6 @@ public class Application implements java.io.Serializable {
 		this.PANumber = PANumber;
 		this.serviceCategory = serviceCategory;
 		this.scheduledAdmissionDate = scheduledAdmissionDate;
+		this.files = files;
 	}
 }

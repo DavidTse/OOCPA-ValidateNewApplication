@@ -1,0 +1,27 @@
+# resource: https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.13/html/integrating_red_hat_process_automation_manager_with_other_products_and_components/openshift-springboot-proc_business-applications
+
+# -- Build your process project JAR file
+mvn -Dskiptest package
+
+# -- Copy process project JAR to image-files directory
+ex) manually copy /target/OOCPA-ValidateNewApplication-1.0.0-SNAPSHOT.jar to /deploy/image-files
+
+
+# -- Build and deploy to OpenShift:
+
+## log into OCP project
+oc login --token=<token> --server=<server>
+
+## create build
+oc new-build --binary --strategy=docker --name oocpa-validate-new-application
+
+oc start-build oocpa-validate-new-application --from-dir=deploy/. --follow
+
+## deploy build
+oc new-app oocpa-validate-new-application
+
+## expose application
+oc expose service/oocpa-validate-new-application --port=8090
+
+## to build+deploy a new version
+oc start-build oocpa-validate-new-application --from-dir=deploy/. --follow
